@@ -1,0 +1,3 @@
+node_modules/**
+.sonarlin/**
+package-lock.json
