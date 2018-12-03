@@ -6,15 +6,24 @@ let obserable = Rx.Observable.create((observer) => {
   setTimeout(() => {
     observer.next(3)
   }, 3000);
+  observer.complete();
   observer.next(4)
 })
 
 obserable.subscribe({
   next: (obj) => {
-    console.log('hello', obj)
+    print('hello ' + obj)
   }
 })
 
 obserable.subscribe((obj) => {
-  console.log('world', obj)
+  print('world ' + obj)
 })
+
+function print(str) {
+  let ele = document.querySelector('.test');
+  let child = document.createElement('div');
+  child.textContent = str;
+  child.style.color = '#' + Math.floor(Math.random() * 888888 + 111111);
+  ele.appendChild(child);
+}
